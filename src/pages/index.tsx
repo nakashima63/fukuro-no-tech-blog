@@ -1,9 +1,11 @@
-import { getAllPosts } from '@/libs/notionAPI';
 import { GetStaticProps } from 'next';
+import { getAllPosts } from '@/libs/notionAPI';
 import { Layout } from '@/components/Layouts/Layout';
 import { Container } from '@/components/Containers/Container';
 import { Section } from '@/components/Sections/Section';
 import { PostCard } from '@/components/Posts/PostCard';
+import { PostCardList } from '@/components/Posts/PostCardList';
+import { Pagination } from '@/components/Paginations/Pagination';
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPosts = await getAllPosts();
@@ -20,21 +22,9 @@ export default function Home({ allPosts }: any) {
     <>
       <Layout>
         <Container>
-          <Section title='最近の投稿'>
-            <div>
-              {allPosts.map((post: any, index: any) => (
-                <div className='pb-4' key={index}>
-                  <PostCard
-                    title={post.title}
-                    tags={post.tags}
-                    description={post.description}
-                    slug={post.slug}
-                    createdAt={post.createdAt}
-                    updatedAt={post.updatedAt}
-                  />
-                </div>
-              ))}
-            </div>
+          <Section title='投稿一覧'>
+            <PostCardList posts={allPosts} />
+            <Pagination startText='前へ' endText='次へ' />
           </Section>
         </Container>
       </Layout>

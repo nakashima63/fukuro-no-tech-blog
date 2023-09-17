@@ -12,7 +12,7 @@ type Props = {
 export const PostCard = ({ title, tags, description, slug, createdAt, updatedAt }: Props) => {
 
   return (
-    <div className='bg-zinc-800 rounded-md shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300 py-2'>
+    <div className='bg-zinc-800 rounded-md shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300 pb-2'>
       <div className='text-white text-2xl pt-4 px-6'>
         {title}
       </div>
