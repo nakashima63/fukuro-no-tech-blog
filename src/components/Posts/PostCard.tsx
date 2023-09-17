@@ -1,4 +1,4 @@
-import { Tag } from "../Tags/Tag";
+import { TagList } from "../Tags/TagList";
 
 type Props = {
   title: string;
@@ -16,11 +16,7 @@ export const PostCard = ({ title, tags, description, slug, createdAt, updatedAt 
       <div className='text-white text-2xl pt-4 px-6'>
         {title}
       </div>
-      <div className='flex gap-2 pt-4 px-6'>
-        {tags.map((tag, index) => (
-          <Tag text={tag} key={index} />
-        ))}
-      </div>
+      <TagList tags={tags} />
       <div className='text-white text-sm pt-4 px-6'>
         { description }
       </div>
