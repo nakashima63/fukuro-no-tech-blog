@@ -1,3 +1,4 @@
+import { formatDate } from "@/libs/dataFormatUtil";
 import { TagList } from "../Tags/TagList";
 
 type Props = {
@@ -22,11 +23,11 @@ export const PostCard = ({ title, tags, description, slug, createdAt, updatedAt 
       </div>
       <div className='flex text-white text-sm pt-4 px-6'>
         <div className='pr-4'>
-          作成日：{createdAt}
+          作成日：{formatDate(createdAt)}
         </div>
         {createdAt !== updatedAt && (
           <div>
-            更新日：{updatedAt}
+            更新日：{formatDate(updatedAt)}
           </div>
         )}
       </div>

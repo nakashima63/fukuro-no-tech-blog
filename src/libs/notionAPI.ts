@@ -34,7 +34,7 @@ const getPageMetaData = (post: any) => {
     tags: getTags(post.properties.tag.multi_select) || [],
     slug: post.properties.slug.rich_text[0]?.plain_text || '',
     published: post.properties.published.checkbox || false,
-    created_at: post.properties.created_at.date?.start || '',
-    updated_at: post.properties.updated_at.date?.start || '',
+    createdAt: post.properties.created_at.date?.start || '',
+    updatedAt: post.properties.updated_at.date?.start || '',
   };
 };

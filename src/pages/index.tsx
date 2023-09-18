@@ -3,7 +3,6 @@ import { getAllPosts } from '@/libs/notionAPI';
 import { Layout } from '@/components/Layouts/Layout';
 import { Container } from '@/components/Containers/Container';
 import { Section } from '@/components/Sections/Section';
-import { PostCard } from '@/components/Posts/PostCard';
 import { PostCardList } from '@/components/Posts/PostCardList';
 import { Pagination } from '@/components/Paginations/Pagination';
 
@@ -30,4 +29,4 @@ export default function Home({ allPosts }: any) {
       </Layout>
     </>
   );  
-}
+};
