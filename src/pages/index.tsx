@@ -23,7 +23,6 @@ export default function Home({ allPosts }: any) {
         <Container>
           <Section title='投稿一覧'>
             <PostCardList posts={allPosts} />
-            <Pagination startText='前へ' endText='次へ' />
           </Section>
         </Container>
       </Layout>
