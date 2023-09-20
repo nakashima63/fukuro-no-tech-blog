@@ -1,5 +1,5 @@
-import { formatDate } from "@/libs/dataFormatUtil";
 import { TagList } from "../Tags/TagList";
+import Link from "next/link";
 
 type Props = {
   title: string;
@@ -14,9 +14,11 @@ export const PostCard = ({ title, tags, description, slug, createdAt, updatedAt 
 
   return (
     <div className='bg-zinc-800 rounded-md shadow-2xl hover:shadow-none hover:translate-y-1 transition-all duration-300 pb-2'>
-      <div className='text-white text-2xl pt-4 px-6'>
-        {title}
-      </div>
+      <Link href={`/posts/${slug}`}>
+        <div className='text-white text-2xl pt-4 px-6 hover:underline'>
+          {title}
+        </div>
+      </Link>
       <TagList tags={tags} />
       <div className='text-white text-sm pt-4 px-6'>
         { description }
@@ -33,4 +35,14 @@ export const PostCard = ({ title, tags, description, slug, createdAt, updatedAt 
       </div>
     </div>
   );
+};
+
+const formatDate = (date: string) => {
+  const dateParts = date.split('-');
+  const year = dateParts[0];
+  const month = dateParts[1];
+  const day = dateParts[2];
+
+  const formattedDate = `${year}年${month}月${day}日`;
+  return formattedDate;
 };
