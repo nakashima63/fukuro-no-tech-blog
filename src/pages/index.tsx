@@ -18,14 +18,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home({ allPosts }: any) {
   return (
-    <>
-      <Layout>
-        <Container>
-          <Section title='投稿一覧'>
-            <PostCardList posts={allPosts} />
-          </Section>
-        </Container>
-      </Layout>
-    </>
+    <Layout>
+      <Container>
+        <Section title='投稿一覧'>
+          <PostCardList posts={allPosts} />
+        </Section>
+        <Pagination numberOfPage={3} tag='' />
+      </Container>
+    </Layout>
   );  
 };
