@@ -10,7 +10,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    startText: '前へ',
-    endText: '次へ',
+    numberOfPage: 1,
+    tag: 'タグ',
   },
 };

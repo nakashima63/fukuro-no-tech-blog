@@ -3,7 +3,6 @@ import { getAllPosts } from '@/libs/notionAPI';
 import { Layout } from '@/components/Layouts/Layout';
 import { Container } from '@/components/Containers/Container';
 import { Section } from '@/components/Sections/Section';
-import { PostCard } from '@/components/Posts/PostCard';
 import { PostCardList } from '@/components/Posts/PostCardList';
 import { Pagination } from '@/components/Paginations/Pagination';
 
@@ -19,15 +18,13 @@ export const getStaticProps: GetStaticProps = async () => {
 
 export default function Home({ allPosts }: any) {
   return (
-    <>
-      <Layout>
-        <Container>
-          <Section title='投稿一覧'>
-            <PostCardList posts={allPosts} />
-            <Pagination startText='前へ' endText='次へ' />
-          </Section>
-        </Container>
-      </Layout>
-    </>
+    <Layout>
+      <Container>
+        <Section title='投稿一覧'>
+          <PostCardList posts={allPosts} />
+        </Section>
+        <Pagination numberOfPage={3} tag='' />
+      </Container>
+    </Layout>
   );  
-}
+};

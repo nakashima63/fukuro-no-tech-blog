@@ -1,8 +1,11 @@
 import { Client } from "@notionhq/client";
+import { NotionToMarkdown } from "notion-to-md";
 
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
+
+const n2m = new NotionToMarkdown({ notionClient: notion });
 
 export const getAllPosts = async (): Promise<any[]> => {
   const posts = await notion.databases.query({
@@ -34,7 +37,31 @@ const getPageMetaData = (post: any) => {
     tags: getTags(post.properties.tag.multi_select) || [],
     slug: post.properties.slug.rich_text[0]?.plain_text || '',
     published: post.properties.published.checkbox || false,
-    created_at: post.properties.created_at.date?.start || '',
-    updated_at: post.properties.updated_at.date?.start || '',
+    createdAt: post.properties.created_at.date?.start || '',
+    updatedAt: post.properties.updated_at.date?.start || '',
   };
+};
+
+export const getPostBySlug = async (slug: string): Promise<any> => {
+  const response = await notion.databases.query({
+    database_id: process.env.NOTION_BLOG_DB_ID!,
+    filter: {
+      property: "slug",
+      formula: {
+        string: {
+          equals: slug,
+        },
+      },
+    },
+  });
+
+  const page = response.results[0];
+  const metadata = getPageMetaData(page);
+  const mdBlocks = await n2m.pageToMarkdown(page.id);
+  const mdString = n2m.toMarkdownString(mdBlocks);
+
+  return {
+    metadata,
+    markdown: mdString
+  }
 };
