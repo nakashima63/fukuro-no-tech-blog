@@ -2,7 +2,7 @@ import { Tag } from "../Tags/Tag";
 
 type Props = {
   title: string;
-  tag: string;
+  tag?: string;
   children: React.ReactNode;
 };
 
