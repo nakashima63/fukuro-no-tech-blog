@@ -65,3 +65,26 @@ export const getPostBySlug = async (slug: string): Promise<any> => {
     markdown: mdString
   }
 };
+
+/**
+ * 全てのタグを取得する
+ */
+export const getAllTags = async () => {
+  const allPosts = await getAllPosts();
+
+  const allTagsDuplicationList = allPosts.flatMap((post) => post.tags);
+  const set = new Set(allTagsDuplicationList);
+  const allTagsList = Array.from(set);
+  
+  return allTagsList;
+};
+
+/**
+ * タグから記事を取得する
+ */
+export const getPostsByTag = async (tag: string) => {
+  const allPosts = await getAllPosts();
+  const posts = allPosts.filter((post) => post.tags.includes(tag));
+
+  return posts;
+};

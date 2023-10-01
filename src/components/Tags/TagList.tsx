@@ -9,7 +9,7 @@ export const TagList = ({ tags }: Props) => {
   return (
     <div className='flex gap-2 pt-4 px-6'>
       {tags.map((tag, index) => (
-        <Link href={`/tags/${tag}`} key={index}>
+        <Link href={`/posts/tags/${tag}`} key={index}>
           <Tag text={tag} />
         </Link>
       ))}

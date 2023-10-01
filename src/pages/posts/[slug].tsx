@@ -37,7 +37,7 @@ const PostContentPage = ({post}: any) => {
             content={post.markdown.parent}
           />
           <div className='text-white pt-4 hover:underline'>
-            <Link href='/'>←戻る</Link>
+            <Link href='/'>←ホームに戻る</Link>
           </div>
         </Container>
       </div>

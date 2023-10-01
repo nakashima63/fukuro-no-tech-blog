@@ -16,8 +16,8 @@ export const Default: Story = {
 
 export const HasTags: Story = {
   args: {
-    title: 'カテゴリ',
-    tags: ['タグ1', 'タグ2', 'タグ3'],
+    title: 'カテゴリ：',
+    tag: 'タグ１',
   },
 };
 
