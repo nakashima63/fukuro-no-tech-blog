@@ -1,16 +1,33 @@
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 
+// Notion APIのクライアントを作成
 const notion = new Client({
   auth: process.env.NOTION_TOKEN,
 });
 
+// NotionToMarkdownのクライアントを作成
 const n2m = new NotionToMarkdown({ notionClient: notion });
 
+/**
+ * 全ての記事を取得する
+ */
 export const getAllPosts = async (): Promise<any[]> => {
   const posts = await notion.databases.query({
     database_id: process.env.NOTION_BLOG_DB_ID!,
     page_size: 100,
+    filter: {
+      property: "published",
+      checkbox: {
+        equals: true,
+      },
+    },
+    sorts: [
+      {
+        property: "id",
+        direction: "descending",
+      }
+    ],
   });
 
   const allPosts: any[] = posts.results;
@@ -20,6 +37,9 @@ export const getAllPosts = async (): Promise<any[]> => {
   });
 };
 
+/**
+ * ページのメタデータを取得する
+ */
 const getPageMetaData = (post: any) => {
 
   const getTags = (tags: any) => {
@@ -42,6 +62,9 @@ const getPageMetaData = (post: any) => {
   };
 };
 
+/**
+ * slugから記事を取得する
+ */
 export const getPostBySlug = async (slug: string): Promise<any> => {
   const response = await notion.databases.query({
     database_id: process.env.NOTION_BLOG_DB_ID!,
@@ -64,4 +87,27 @@ export const getPostBySlug = async (slug: string): Promise<any> => {
     metadata,
     markdown: mdString
   }
+};
+
+/**
+ * 全てのタグを取得する
+ */
+export const getAllTags = async () => {
+  const allPosts = await getAllPosts();
+
+  const allTagsDuplicationList = allPosts.flatMap((post) => post.tags);
+  const set = new Set(allTagsDuplicationList);
+  const allTagsList = Array.from(set);
+  
+  return allTagsList;
+};
+
+/**
+ * タグから記事を取得する
+ */
+export const getPostsByTag = async (tag: string) => {
+  const allPosts = await getAllPosts();
+  const posts = allPosts.filter((post) => post.tags.includes(tag));
+
+  return posts;
 };

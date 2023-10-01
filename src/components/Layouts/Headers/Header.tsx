@@ -14,7 +14,7 @@ export const Header = () => {
       <Link href='/' className='text-lg text-rose-500 hover:underline ml-4'>
         Home
       </Link>
-      <Link href='/' className='text-lg text-rose-500 hover:underline ml-4'>
+      <Link href='/profile' className='text-lg text-rose-500 hover:underline ml-4'>
         Profile
       </Link>
     </header>

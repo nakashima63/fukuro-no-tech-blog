@@ -6,7 +6,7 @@ type Props = {
 
 export const PostCardList = ({ posts = [] }: Props) => {
   return (
-    <div className='flex flex-col gap-4'>
+    <div className='flex flex-col gap-4 pb-4'>
       {posts.map((post: any, index: any) => (
         <div key={index}>
           <PostCard

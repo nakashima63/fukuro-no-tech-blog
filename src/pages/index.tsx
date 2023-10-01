@@ -4,7 +4,6 @@ import { Layout } from '@/components/Layouts/Layout';
 import { Container } from '@/components/Containers/Container';
 import { Section } from '@/components/Sections/Section';
 import { PostCardList } from '@/components/Posts/PostCardList';
-import { Pagination } from '@/components/Paginations/Pagination';
 
 export const getStaticProps: GetStaticProps = async () => {
   const allPosts = await getAllPosts();
@@ -23,7 +22,6 @@ export default function Home({ allPosts }: any) {
         <Section title='投稿一覧'>
           <PostCardList posts={allPosts} />
         </Section>
-        <Pagination numberOfPage={3} tag='' />
       </Container>
     </Layout>
   );  
