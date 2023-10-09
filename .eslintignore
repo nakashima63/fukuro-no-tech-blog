@@ -12,3 +12,6 @@ bin/
 obj/
 out/
 .next/
+
+# あとで直す
+src/
