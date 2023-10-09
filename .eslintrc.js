@@ -1,5 +1,8 @@
 /** @type {import('eslint').ESLint.ConfigData} */
 module.exports = {
+  parserOptions: {
+    project: './tsconfig.json',
+  },
   extends: [
     'next/core-web-vitals',
     'prettier',
