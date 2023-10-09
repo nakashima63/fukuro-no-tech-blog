@@ -13,7 +13,7 @@ type Props = {
 
 export const PostContent = ({ title, tags, createdAt, updatedAt, content }: Props) => {
   return (
-    <section className='bg-zinc-800 pb-2'>
+    <section className='bg-zinc-800 pb-8'>
       <h2 className='text-white text-2xl pt-4 px-6'>{title}</h2>
       <div className='flex text-white text-sm pt-4 px-6'>
         <span className='pr-4'>作成日：{formatDate(createdAt)}</span>
@@ -22,7 +22,6 @@ export const PostContent = ({ title, tags, createdAt, updatedAt, content }: Prop
         )}
       </div>
       <TagList tags={tags} />
-      <hr className="border-t border-white my-4" />
       <div className='PostContent text-white px-6'>
         <ReactMarkdown 
           components={{
