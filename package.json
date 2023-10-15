@@ -27,6 +27,7 @@
     "react-markdown": "^8.0.7",
     "react-syntax-highlighter": "^15.5.0",
     "storybook-dark-mode": "^3.0.1",
+    "swr": "^2.2.4",
     "typescript": "5.2.2"
   },
   "devDependencies": {
