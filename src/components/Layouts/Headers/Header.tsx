@@ -17,6 +17,11 @@ export const Header = () => {
       <Link href='/profile' className='text-lg text-rose-500 hover:underline ml-4'>
         Profile
       </Link>
+      <div className='text-lg text-rose-500 ml-auto'>
+        <a href='https://fukuro-no-tech-blog-storybook.vercel.app/' className='hover:underline mr-4'>
+          Storybook
+        </a>
+      </div>
     </header>
   );
 };
